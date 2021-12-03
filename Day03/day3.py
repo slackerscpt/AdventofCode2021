@@ -27,8 +27,8 @@ def setCO2Scrubber(data):
     while (position < 12):
         startingData = determineNumbers(updatedData)
         mostCommon = findLeastCommon(position, startingData)
-        print ('Least Common: %s' %mostCommon)
-        print ('Position: %s' %position)
+        #print ('Least Common: %s' %mostCommon)
+        #print ('Position: %s' %position)
         updatedData = keepCommon(mostCommon, position, updatedData)
         #print (updatedData)
         #print (len(updatedData))
@@ -47,15 +47,14 @@ def setOxyNumber(data):
     position = 0
     while (position < 12):
         startingData = determineNumbers(updatedData)
-        print (startingData)
         mostCommon = findMostCommon(position, startingData)
-        print ('Most Common: %s' %mostCommon)
-        print ('Position: %s' %position)
+        #print ('Most Common: %s' %mostCommon)
+        #print ('Position: %s' %position)
         updatedData = keepCommon(mostCommon, position, updatedData)
         if (len(updatedData) == 1):
             position = 12
         position += 1
-        print (updatedData)
+        #print (updatedData)
 
     #print (updatedData[0])
     return str(updatedData[0])
@@ -136,11 +135,7 @@ def part2():
     Co2Number = setCO2Scrubber(data)
     a= (int(OxyNumber, 2))
     b =(int(Co2Number, 2))
-    print (OxyNumber)
-    print (a)
-    print (Co2Number)
-    print (b)
-    print (a*b)
+    print ('Part 2 Answer: %s' %(a*b))
 
 
 
