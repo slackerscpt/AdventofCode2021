@@ -20,22 +20,60 @@ def countOccurances(numbers, position):
 
     return (zero, one)
 
+def setCO2Scrubber(data):
+    #for each position, we will keep the most common, or if equal 1
+    updatedData = data
+    position = 0
+    while (position < 12):
+        startingData = determineNumbers(updatedData)
+        mostCommon = findLeastCommon(position, startingData)
+        print ('Least Common: %s' %mostCommon)
+        print ('Position: %s' %position)
+        updatedData = keepCommon(mostCommon, position, updatedData)
+        #print (updatedData)
+        #print (len(updatedData))
+        if (len(updatedData) == 1):
+            position = 12
+        position += 1
 
-def setCo2Number(collectionData, data):
-    mostCommon = findMostCommon(0, collectionData)
-    data = keepCommon(mostCommon, 0, data)
-    
-    #We need to wind down by position
+    #print (updatedData[0])
+    return updatedData[0]
     
 
+
+def setOxyNumber(data):
+    #for each position, we will keep the most common, or if equal 1
+    updatedData = data
+    position = 0
+    while (position < 12):
+        startingData = determineNumbers(updatedData)
+        print (startingData)
+        mostCommon = findMostCommon(position, startingData)
+        print ('Most Common: %s' %mostCommon)
+        print ('Position: %s' %position)
+        updatedData = keepCommon(mostCommon, position, updatedData)
+        if (len(updatedData) == 1):
+            position = 12
+        position += 1
+        print (updatedData)
+
+    #print (updatedData[0])
+    return str(updatedData[0])
 
 def keepCommon(mostCommon, position, data):
     updatedData = []
     for numbers in data:
-        if numbers[0] == str(mostCommon):
+        if numbers[position] == str(mostCommon):
             updatedData.append(numbers)
 
     return updatedData  
+
+def findLeastCommon(position, collectionData):
+    zero, one = collectionData[position]
+    if (zero > one ):
+        return 1
+    else:
+        return 0
 
 def findMostCommon(position, collectionData):
     zero, one = collectionData[position]
@@ -81,7 +119,6 @@ def determineNumbers(data):
         position += 1
 
     return collectionData
-    #setEpNumber(collectionData)
 
 
 
@@ -94,8 +131,16 @@ def part1():
 
 def part2():
     data = readFiles()
-    collectionData = determineNumbers(data)
-    setCo2Number(collectionData, data)
+    OxyNumber = setOxyNumber(data)
+    data = readFiles()
+    Co2Number = setCO2Scrubber(data)
+    a= (int(OxyNumber, 2))
+    b =(int(Co2Number, 2))
+    print (OxyNumber)
+    print (a)
+    print (Co2Number)
+    print (b)
+    print (a*b)
 
 
 
