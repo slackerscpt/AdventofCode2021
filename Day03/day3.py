@@ -24,12 +24,14 @@ def countOccurances(numbers, position):
 def setCo2Number(collectionData, data):
     mostCommon = findMostCommon(0, collectionData)
     data = keepCommon(mostCommon, 0, data)
+    
+    #We need to wind down by position
+    
 
 
 def keepCommon(mostCommon, position, data):
     updatedData = []
     for numbers in data:
-        print (type(numbers[position]))
         if numbers[0] == str(mostCommon):
             updatedData.append(numbers)
 
